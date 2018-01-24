@@ -76,7 +76,11 @@ function get_latest_files() {
 	echo "${files}"
 }
 
-input_json=$(</dev/stdin)
+
+SCRIPT_INPUT='/tmp/input'
+cat > $SCRIPT_INPUT <&0 # STDIN params
+
+input_json=$(cat /tmp/input)
 
 vars=$(initialize "${input_json}")
 
